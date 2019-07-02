@@ -6,7 +6,7 @@ from collections import defaultdict
 
 client = discord.Client()
 token = 'NTkzOTM1MzQxOTA0MzMwNzU0.XRjAzA.2_cgw5ie7VYB5zdfj-nU1BmZ86Y'
-serverID = 557566962977472523
+serverID = 481492989592600577
 datastore = defaultdict(int)
 
 
@@ -20,7 +20,7 @@ async def counter1(channel,count1):
                 count1[user]=1
 @client.event
 async def on_ready():
-    filename = 'jsonFile.json'
+    filename = 'jsonFile2.json'
     guild = client.get_guild(serverID)
     channel = guild.text_channels
     print("entering Ready....")
@@ -42,16 +42,15 @@ async def on_ready():
 async def on_message(message):
     print("entering message.....")
 
-    if message.content.lower().find('!ncount') != -1 and message.mentions:
+    if message.content.lower().find('!ncount') != -1 and message.content.lower().find('@') != -1:
         memebers=message.mentions
-        filename = 'jsonFile.json'
+        filename = 'jsonFile2.json'
         with open(filename,'r') as jsonFile:
             d = json.load(jsonFile)
+        for i in memebers:
+            print(i.display_name)
         await message.channel.send(memebers[0].display_name+" you thot, you owe snow a cool "+'``'+'$'+str(d[memebers[0].display_name]*4)+'``')
     else:
-        filename = 'jsonFile.json'
-        with open(filename,'r') as jsonFile:
-            d = json.load(jsonFile)
         await message.channel.send("Hey thot you owe Snow "+'``'+'$'+str(d[message.author.display_name]*4)+'``')
 
 
@@ -59,7 +58,7 @@ async def on_message(message):
         print("entering !allncount....")
         channel = message.channel
         buffer2=''
-        filename = 'jsonFile.json'
+        filename = 'jsonFile2.json'
         if os.path.exists(filename):
             with open(filename,'r') as jsonFile:
                 d = (json.load(jsonFile))
@@ -74,10 +73,10 @@ async def on_message(message):
 
     if message.content.lower().find('send1') != -1:
         await message.channel.send('nigger')
-        
+
     if message.content.lower().find('nigger') != -1 or message.content.lower().find('nigga') != -1:
         print('someone said the N word....')
-        filename = 'jsonFile.json'
+        filename = 'jsonFile2.json'
         if os.path.exists(filename):
             with open(filename,'r') as jsonFile:
                 d = json.load(jsonFile)
