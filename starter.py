@@ -2,7 +2,7 @@ import discord
 import json
 from json.decoder import JSONDecodeError
 
-token = 'NTkzOTM1MzQxOTA0MzMwNzU0.XRjAzA.2_cgw5ie7VYB5zdfj-nU1BmZ86Y'
+token = 'private'
 
 count = dict = {}
 client = discord.Client()
