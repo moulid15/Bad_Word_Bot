@@ -5,7 +5,7 @@ from json.decoder import JSONDecodeError
 from collections import defaultdict
 
 
-message='nigger'
+message='Badword'
 user='gecki'
 if message.find('Badword')!=-1:
     print('someone said a bad word....')
