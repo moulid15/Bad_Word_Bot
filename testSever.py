@@ -6,7 +6,7 @@ from collections import defaultdict
 
 client = discord.Client()
 token = 'NTkzOTM1MzQxOTA0MzMwNzU0.XRjAzA.2_cgw5ie7VYB5zdfj-nU1BmZ86Y'
-serverID = 481492989592600577
+serverID = 557566962977472523
 datastore = defaultdict(int)
 
 
@@ -18,10 +18,11 @@ async def counter1(channel,count1):
                 count1[user] += 1
             else:
                 count1[user]=1
+
 @client.event
 async def on_ready():
-    filename = 'jsonFile2.json'
-    guild = client.get_guild(serverID)
+    filename='jsonFile2.json'
+    guild=client.get_guild(serverID)
     channel = guild.text_channels
     print("entering Ready....")
 
@@ -38,20 +39,10 @@ async def on_ready():
             json.dump(l,f, indent=4)
     print('exiting ready....')
 
-@client.event
-async def on_message(message):
-    print("entering message.....")
+    @client.event
+    async def on_message(message):
+        print("entering message.....")
 
-    if message.content.lower().find('!ncount') != -1 and message.content.lower().find('@') != -1:
-        memebers=message.mentions
-        filename = 'jsonFile2.json'
-        with open(filename,'r') as jsonFile:
-            d = json.load(jsonFile)
-        for i in memebers:
-            print(i.display_name)
-        await message.channel.send(memebers[0].display_name+" you thot, you owe snow a cool "+'``'+'$'+str(d[memebers[0].display_name]*4)+'``')
-    else:
-        await message.channel.send("Hey thot you owe Snow "+'``'+'$'+str(d[message.author.display_name]*4)+'``')
 
 
     if message.content.lower().find('!allncount') != -1:
@@ -91,5 +82,29 @@ async def on_message(message):
         else:
             print('wait for the bot to start')
 
-        print('finishing updating Jsonfile....')
+    if message.content.lower().find('!ncount') != -1 and message.content.lower().find('@') != -1:
+        memebers=message.mentions
+        filename = 'jsonFile2.json'
+        with open(filename,'r') as jsonFile:
+            d = json.load(jsonFile)
+        for i in memebers:
+            print(i.display_name)
+            if i.display_name not in d:
+                await message.channel.send(i.display_name+'is not a Racist')
+            else:
+                await message.channel.send(i.display_name+" you thot, you owe snow a cool "+'``'+'$'+str(d[i.display_name]*4)+'``')
+    if message.content.lower().find('!mecount') != -1:
+        user=message.author.display_name
+        filename = 'jsonFile2.json'
+        with open(filename,'r') as jsonFile:
+            count1 = json.load(jsonFile)
+        if user in count1:
+            await message.channel.send('Hey thot you owe Snow:    ``'+'$'+ str(count1[user]*4)+'``')
+        else:
+            await message.channel.send('You are not a Racist')
+# else:
+    #     await message.channel.send("Hey thot you owe Snow "+'``'+'$'+str(d[message.author.display_name]*4)+'``')
+
+
+    print('finishing updating Jsonfile....')
 client.run(token)

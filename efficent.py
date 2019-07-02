@@ -20,7 +20,7 @@ async def counter1(channel,count1):
                 count1[user]=1
 @client.event
 async def on_ready():
-    filename = 'jsonFile.json'
+    filename = 'jsonFile2.json'
     guild = client.get_guild(serverID)
     channel = guild.text_channels
     print("entering Ready....")
@@ -42,24 +42,24 @@ async def on_ready():
 async def on_message(message):
     print("entering message.....")
 
-    if message.content.lower().find('!ncount') != -1 and message.mentions:
-        memebers=message.mentions
-        filename = 'jsonFile.json'
-        with open(filename,'r') as jsonFile:
-            d = json.load(jsonFile)
-        await message.channel.send(memebers[0].display_name+" you thot, you owe snow a cool "+'``'+'$'+str(d[memebers[0].display_name]*4)+'``')
-    else:
-        filename = 'jsonFile.json'
-        with open(filename,'r') as jsonFile:
-            d = json.load(jsonFile)
-        await message.channel.send("Hey thot you owe Snow "+'``'+'$'+str(d[message.author.display_name]*4)+'``')
+    # if message.content.lower().find('!ncount') != -1 and message.mentions:
+    #     memebers=message.mentions
+    #     filename = 'jsonFile2.json'
+    #     with open(filename,'r') as jsonFile:
+    #         d = json.load(jsonFile)
+    #     await message.channel.send(memebers[0].display_name+" you thot, you owe snow a cool "+'``'+'$'+str(d[memebers[0].display_name]*4)+'``')
+    # else:
+    #     filename = 'jsonFile.json'
+    #     with open(filename,'r') as jsonFile:
+    #         d = json.load(jsonFile)
+    #     await message.channel.send("Hey thot you owe Snow "+'``'+'$'+str(d[message.author.display_name]*4)+'``')
 
 
     if message.content.lower().find('!allncount') != -1:
         print("entering !allncount....")
         channel = message.channel
         buffer2=''
-        filename = 'jsonFile.json'
+        filename = 'jsonFile2.json'
         if os.path.exists(filename):
             with open(filename,'r') as jsonFile:
                 d = (json.load(jsonFile))
@@ -74,10 +74,10 @@ async def on_message(message):
 
     if message.content.lower().find('send1') != -1:
         await message.channel.send('nigger')
-        
+
     if message.content.lower().find('nigger') != -1 or message.content.lower().find('nigga') != -1:
         print('someone said the N word....')
-        filename = 'jsonFile.json'
+        filename = 'jsonFile2.json'
         if os.path.exists(filename):
             with open(filename,'r') as jsonFile:
                 d = json.load(jsonFile)
@@ -93,4 +93,26 @@ async def on_message(message):
             print('wait for the bot to start')
 
         print('finishing updating Jsonfile....')
+
+    if message.content.lower().find('!ncount') != -1 and message.content.lower().find('@') != -1:
+        memebers=message.mentions
+        filename = 'jsonFile2.json'
+        with open(filename,'r') as jsonFile:
+            d = json.load(jsonFile)
+        for i in memebers:
+            print(i.display_name)
+            if i.display_name not in d:
+                await message.channel.send(i.display_name+'is not a Racist')
+            else:
+                await message.channel.send(i.display_name+" you thot, you owe snow a cool "+'``'+'$'+str(d[i.display_name]*4)+'``')
+    if message.content.lower().find('!mecount') != -1:
+        user=message.author.display_name
+        filename = 'jsonFile2.json'
+        with open(filename,'r') as jsonFile:
+            count1 = json.load(jsonFile)
+        if user in count1:
+            await message.channel.send('Hey thot you owe Snow:    ``'+'$'+ str(count1[user]*4)+'``')
+        else:
+            await message.channel.send('You are not a Racist')
+
 client.run(token)
