@@ -7,8 +7,8 @@ from collections import defaultdict
 
 message='nigger'
 user='gecki'
-if message.find('nigger')!=-1:
-    print('someone said the N word....')
+if message.find('Badword')!=-1:
+    print('someone said a bad word....')
     filename = 'jsonFile.json'
     if os.path.exists(filename):
         with open(filename,'r') as jsonFile:
