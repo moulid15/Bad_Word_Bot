@@ -5,8 +5,8 @@ from json.decoder import JSONDecodeError
 from collections import defaultdict
 
 client = discord.Client()
-token = 'NTkzOTM1MzQxOTA0MzMwNzU0.XRjAzA.2_cgw5ie7VYB5zdfj-nU1BmZ86Y'
-serverID = 481492989592600577
+token = 'private'
+serverID = 'private'
 datastore = defaultdict(int)
 
 
