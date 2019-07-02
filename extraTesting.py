@@ -5,10 +5,10 @@ from json.decoder import JSONDecodeError
 from collections import defaultdict
 
 
-message='nigger'
+message='badword'
 user='gecki'
-if message.find('nigger')!=-1:
-    print('someone said the N word....')
+if message.find('badword')!=-1:
+    print('someone said the a bad word....')
     filename = 'jsonFile.json'
     if os.path.exists(filename):
         with open(filename,'r') as jsonFile:
