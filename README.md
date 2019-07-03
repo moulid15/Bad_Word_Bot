@@ -1,5 +1,5 @@
 # Bad_Word_Bot
-#### This is a discord bot that dectects all the bad words you choose in a discord server,<br /> It makes a count of them and multiples the count by `$4`.<br /> Every bad word is worth `$4`.
+This is a discord bot that dectects all the bad words you choose in a discord server,<br /> <br /> It makes a count of them and multiples the count by `$4`.<br /> <br /> Every bad word is worth `$4`.<br /> 
 # 4 commands: 
 `!ncount @user` this will get you the users you @ amount.<br />
 `!mecount` your amount <br />
