@@ -73,7 +73,7 @@ async def on_message(message):
     #     await counter2(message.channel)
 
     if message.content.lower().find('send1') != -1:
-        await message.channel.send('nigger')
+        await message.channel.send('some bad word')
         
     if message.content.lower().find('badword1') != -1 or message.content.lower().find('badword2') != -1:
         print('someone said a bad word....')
